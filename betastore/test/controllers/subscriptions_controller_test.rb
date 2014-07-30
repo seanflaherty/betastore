@@ -1,49 +1,23 @@
 require 'test_helper'
 
 class SubscriptionsControllerTest < ActionController::TestCase
-  setup do
-    @subscription = subscriptions(:one)
-  end
-
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:subscriptions)
-  end
-
-  test "should get new" do
+  def test_new
     get :new
+    assert_select "form[action=/subscriptions]"
+    assert_select "input[name='subscription[email]']"
+    assert_select "input[type=submit][value=Create Subscription]"
     assert_response :success
   end
 
-  test "should create subscription" do
-    assert_difference('Subscription.count') do
-      post :create, subscription: { email: @subscription.email }
+  def test_create
+    assert_difference 'Subscription.count' do
+      post :create, subscription: { email: 'test@example.com' }
     end
-
-    assert_redirected_to subscription_path(assigns(:subscription))
+    subscription = Subscription.last
+    assert_equal 'test@example.com', subscription.email
+    assert_redirected_to subscription_path(subscription)
+    assert_equal 'Subscription was successfully created.',
+      flash[:notice] 
   end
-
-  test "should show subscription" do
-    get :show, id: @subscription
-    assert_response :success
+  
   end
-
-  test "should get edit" do
-    get :edit, id: @subscription
-    assert_response :success
-  end
-
-  test "should update subscription" do
-    patch :update, id: @subscription, subscription: { email: @subscription.email }
-    assert_redirected_to subscription_path(assigns(:subscription))
-  end
-
-  test "should destroy subscription" do
-    assert_difference('Subscription.count', -1) do
-      delete :destroy, id: @subscription
-    end
-
-    assert_redirected_to subscriptions_path
-  end
-end
