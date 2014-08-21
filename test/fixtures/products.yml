@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+hat:
+  name: Hat
+  price: 5.99
+  description: This is a hat.
+  image_url: http://upload.wikimedia.org/wikipedia/commons/c/ce/Indiana_Jones_fedora_hat.jpg
+
+two:
+  name: Coat
+  price: 9.99
+  description: This is a coat.
+  image_url: http://en.wikipedia.org/wiki/Coat_(clothing)#mediaviewer/File:John_F_Kennedy_Official_Portrait.jpg

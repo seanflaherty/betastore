@@ -1,0 +1,25 @@
+<h1><%= @product.name %></h1>
+  <p>
+  <%= image_tag @product.image_url, alt: @product.name, class: 'img-responsive' %>
+  </p>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Description</th>
+    <th>Created At</th>
+  </tr>
+    <tr>
+      <td><%= @product.id %></td>
+      <td><%= @product.name %></td>
+      <td><%= @product.price %></td>
+      <td><%= @product.description %></td>
+      <td><%= @product.created_at %></td>
+    </tr>
+  </table>
+  <p><%= link_to "Add to Cart", add_to_cart_path(@product.id), class:'btn btn btn-success', method: 'post' %></p>  
+
+  <p>
+  <%= link_to "Back to Product List",products_path %>
+  </p>
