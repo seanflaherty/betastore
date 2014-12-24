@@ -1,9 +1,10 @@
 class Admin::LoginsController < ApplicationController
-  #layout 
+  #layout
 
   def create
     user = User.find_by(email: params[:email])
-    if user.try(:authenticate, params[:password])
+    if user && user.authenticate(params[:password_digest])
+    #SCF if user.try(:authenticate, params[:password])
       session[:user_id] = user.id
       flash[:notice] = "Welcome back!"
       redirect_to admin_products_path
@@ -13,7 +14,7 @@ class Admin::LoginsController < ApplicationController
     end
   end
   #SCF Alternative version of the create method
-  #Don't think it works.  
+  #Don't think it works.
   #   def create
   #   user = User.find_by(email: params[:email])
   #   if user && user.authenticate(params[:password])
