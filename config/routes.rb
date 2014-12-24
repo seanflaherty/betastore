@@ -8,6 +8,10 @@ Betastore::Application.routes.draw do
 
   put '/orders' => 'orders#update', as: 'order'
 
+  get '/completed' => 'orders#show', as: 'completed'
+  #SCF Do I need this?
+  #put '/completed' => 'orders#show', as: 'completed'
+
   get '/checkout'   => 'orders#new', as: 'neworder'
   post '/checkout'  => 'orders#create'
 

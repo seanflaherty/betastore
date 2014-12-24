@@ -29,4 +29,9 @@ class OrdersController < ApplicationController
     #session[:cart] = {"1" => 3, "155" => 0}
     redirect_to cart_path, notice: 'Your cart was updated'
   end
+
+  def show
+    @order = Order.from_cart(session[:cart])
+  end
+
 end

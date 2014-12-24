@@ -11,6 +11,6 @@ class UserMailer < ActionMailer::Base
     @name = @name.titleize
     @greeting = "Hi"
 
-    mail to: user.email
+    mail to: "#{@name} <user.email>"
   end
 end

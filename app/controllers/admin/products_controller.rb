@@ -5,7 +5,6 @@ class Admin::ProductsController < ApplicationController
   def index
       @products = Product.order('name')
       redirect_to admin_login_path, alert: 'Please log in to continue'
-    end
   end
 
   def show
@@ -14,6 +13,15 @@ class Admin::ProductsController < ApplicationController
 
   def new
     @product = Product.new
+  end
+
+  def create
+    @product = Product.new(product_params)
+    if @product.save
+      redirect_to admin_product_path(@product), notice: "Product #{@product.id} was created.  "
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -36,23 +44,13 @@ class Admin::ProductsController < ApplicationController
   end
 
 
-  def create
-    @product = Product.new(product_params)
-    if @product.save
-      redirect_to admin_product_path(@product), notice: "Product #{@product.id} was created.  "
-    else
-      render 'new'
-    end
-  end
-
   private
-
-  def logged_in?
-    session[:logged_in_email].present?
-  end
-
   def product_params
     params.require(:product).permit!
+  end
+  
+  def logged_in?
+    session[:user_id].present?
   end
 
   def require_login
@@ -60,3 +58,5 @@ class Admin::ProductsController < ApplicationController
       redirect_to admin_logins_path, danger: 'Please log in to continue'
     end
   end
+
+end

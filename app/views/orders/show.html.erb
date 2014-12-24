@@ -1,0 +1,29 @@
+<h1>Completed Order</h1>
+
+<table class="table">
+  <tr>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Base Price</th>
+    <th>Total Price</th>
+  </tr>
+  <%= form_for @order, url: order_path, html: { method: 'put' } do |f| %>
+   <%= f.fields_for :line_items do |li| %>
+      <% line_item = li.object %>
+      <%= li.hidden_field :product_id %>
+    <tr>
+      <td><%= line_item.product.name %></td>
+      <td><%= line_item.quantity %></td>
+      <td><%= number_to_currency line_item.total_price %></td> 
+    </tr>
+    <% end %>
+  
+  
+  <tr> 
+    <td colspan="3">
+    <%= link_to "Print Receipt", completed_path, class: 'btn btn-primary' %>
+     </td>
+    <td><%= number_to_currency @order.total %></td>
+  </tr> 
+  <% end %>
+  </table>
