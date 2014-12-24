@@ -1,0 +1,11 @@
+<%= form_for [:admin, @customer] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.label :state_code %>
+  <%= f.text_field :state_code %>
+  <%= f.label :zip_code %>
+  <%= f.text_field :zip_code %>
+  <%= f.submit %>
+<% end %>
