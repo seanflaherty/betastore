@@ -1,5 +1,5 @@
 class Admin::ProductsController < ApplicationController
-  
+
   before_action :require_login
 
   def index
@@ -35,7 +35,7 @@ class Admin::ProductsController < ApplicationController
       redirect_to admin_product_path(@product), notice: "Product #{@product.id} was updated.  "
     else
       render 'edit'
-    end 
+    end
   end
 
   def destroy
@@ -46,9 +46,9 @@ class Admin::ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit!
+    params.require(:product).permit(:name, :price)
   end
-  
+
   def logged_in?
     session[:user_id].present?
   end
