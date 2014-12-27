@@ -1,5 +1,5 @@
 class Admin::LoginsController < ApplicationController
-  #layout
+  layout 'login'
 
   def create
     user = User.find_by(email: params[:email])
