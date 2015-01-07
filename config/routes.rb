@@ -17,6 +17,7 @@ Betastore::Application.routes.draw do
 
   namespace :admin do
     resources :products
+    #SCFbinding.pry
     resources :users
     resources :customers
     get '/login' => 'logins#new', as: 'logins'
