@@ -3,8 +3,11 @@ class Admin::ProductsController < ApplicationController
   before_action :require_login
 
   def index
+    if logged_in?
       @products = Product.order('name')
+    else
       redirect_to admin_login_path, alert: 'Please log in to continue'
+    end
   end
 
   def show
