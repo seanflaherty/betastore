@@ -47,17 +47,14 @@ group :production do
   gem "rails_12factor"
 end
 
-group :development do 
+group :development do
   gem 'hirb'
   gem 'faker'
   gem 'pry'
-  gem 'brakeman', require: false 
+  gem 'brakeman', require: false
 end
 
 group :test do
   gem 'capybara'
   gem 'launchy'
 end
-
-
-
