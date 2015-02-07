@@ -1,4 +1,5 @@
 Betastore::Application.routes.draw do 
+  devise_for :users
   resources :users
   resources :products
   resources :subscriptions

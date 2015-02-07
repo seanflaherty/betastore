@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -62,7 +62,7 @@ class UsersController < ApplicationController
   end
 
   def admin?
-      self.is_a?(Admin) 
+      self.is_a?(Admin)
   end
 
   def customer?

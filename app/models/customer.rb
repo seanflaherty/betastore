@@ -1,4 +1,4 @@
-class Customer < ActiveRecord::Base
+class Customer < User
 
   has_many :orders
   has_many :line_items, :through => :orders
@@ -10,7 +10,7 @@ class Customer < ActiveRecord::Base
   #          :message => ""
   validates :email, presence:true, uniqueness: true
   validate :valid_state_code
-  
+
 
   validates_format_of :email,
                       :with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/,
@@ -46,4 +46,3 @@ class Customer < ActiveRecord::Base
 end
 
 #SCF { 'AK','AL','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI', 'WY' }
-
