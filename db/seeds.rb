@@ -24,5 +24,6 @@ LineItem.create(order: order, quantity: 1, product: smoothie)
 order = Order.create(customer: test, placed_at: Time.current)
 LineItem.create(order: order, quantity: 1, product: muffin)
 LineItem.create(order: order, quantity: 1, product: coffee)
+
 User.create!(email: 'sean@seanflaherty.net', password: 'password', type: 'Customer')
 User.create!(email: 'admin@seanflaherty.net', password: 'password', type: 'Administrator')
